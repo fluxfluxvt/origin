@@ -1,0 +1,44 @@
+Dim ÖåíàÁèëåòà As Single
+Dim Ñðîê As Single
+Dim Ðàñõîäû As Single
+Dim i As Single
+
+
+Private Sub UserForm_Initialize()
+ListBox1.AddItem "Ìîñêâà"
+ListBox1.AddItem "Ïåíçà"
+ListBox1.AddItem "ßðîñëàâëü"
+ListBox1.AddItem "Ñûêòûâêàð"
+ListBox1.AddItem "Êíÿãèíèíî"
+End Sub
+Private Sub CommandButton1_Click()
+i = ListBox1.ListIndex
+Select Case i
+Case 0
+ÖåíàÁèëåòà = 600
+Case 1, 2
+ÖåíàÁèëåòà = 400
+Case 3
+ÖåíàÁèëåòà = 500
+Case 4
+ÖåíàÁèëåòà = 100
+End Select
+If TextBox1.Text = "" Then
+MsgBox ("Ââåäèòå ñðîê!!!")
+ElseIf TextBox1.Text <= 0 Then
+MsgBox ("Ñðîê íå ìîæåò áûòü îòðèöàòåëüíûì èëè ðàâíûì íóëþ!!!")
+ElseIf TextBox1.Text = Fix(TextBox1.Text) Then
+Ñðîê = CSng(TextBox1.Text)
+Ðàñõîäû = ÖåíàÁèëåòà + Ñðîê * 100
+TextBox2.Text = CStr(Ðàñõîäû)
+Else
+MsgBox ("Ââåäèòå öåëîå ÷èñëî!!!")
+End If
+End Sub
+Private Sub CommandButton2_Click()
+TextBox1.Text = ""
+TextBox2.Text = ""
+End Sub
+Private Sub CommandButton3_Click()
+End
+End Sub
